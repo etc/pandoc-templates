@@ -2,7 +2,7 @@
 % Incorporate Git info
 \usepackage[dvipsnames]{xcolor}
 \usepackage[en-AU]{datetime2}
-\usepackage[markifdirty]{gitinfo2}
+\usepackage{gitinfo2}
 $if(beamerarticle)$
 \usepackage{beamerarticle} % needs to be loaded first
 $endif$
@@ -298,7 +298,7 @@ $endif$
 $body$
 \\~
 \\\hspace*{\fill}\DTMusedate{gitdate}
-\\\hspace*{\fill}{\color{Gray}\footnotesize\texttt{\gitAbbrevHash}}
+\\\hspace*{\fill}{\color{Gray}\footnotesize\texttt{VERSION \gitAbbrevHash}}
 
 $if(natbib)$
 $if(bibliography)$
