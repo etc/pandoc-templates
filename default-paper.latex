@@ -1,4 +1,8 @@
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+% Incorporate Git info
+\usepackage[dvipsnames]{xcolor}
+\usepackage[en-AU]{datetime2}
+\usepackage[markifdirty]{gitinfo2}
 $if(beamerarticle)$
 \usepackage{beamerarticle} % needs to be loaded first
 $endif$
@@ -292,6 +296,9 @@ $if(lof)$
 \listoffigures
 $endif$
 $body$
+\\~
+\\\hspace*{\fill}\DTMusedate{gitdate}
+\\\hspace*{\fill}{\color{Gray}\footnotesize\texttt{\gitAbbrevHash}}
 
 $if(natbib)$
 $if(bibliography)$
