@@ -2,6 +2,7 @@
 $if(beamerarticle)$
 \usepackage{beamerarticle} % needs to be loaded first
 $endif$
+\usepackage{amssymb,amsmath}
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
@@ -11,7 +12,6 @@ $if(linestretch)$
 \usepackage{setspace}
 \setstretch{$linestretch$}
 $endif$
-\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -100,6 +100,10 @@ $endif$
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
+
+\usepackage{titlesec}
+\titleformat*{\section}{\large\bfseries}
+
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
@@ -222,6 +226,22 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+\usepackage[style]{abstract}
+% To change the title for the abstract (or remove it)
+% \renewcommand{\abstractname}{abstract}
+\renewcommand{\absnamepos}{flushleft}
+\setlength{\absleftindent}{0pt}
+\renewcommand{\abstitlestyle}[1]{\small\emph{#1}}
+\setlength{\abstitleskip}{-1.2em}
+
+\usepackage{titling}
+\pretitle{\begin{flushleft}\LARGE}
+\posttitle{\end{flushleft}\par\vskip 1.5em}
+\preauthor{\begin{flushleft}}
+\postauthor{\end{flushleft}}
+\predate{\begin{flushleft}\footnotesize\vspace{0.9em}}
+\postdate{\end{flushleft}\par\vskip 2em}
+
 $if(title)$
 \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
@@ -230,7 +250,10 @@ $if(subtitle)$
 \subtitle{$subtitle$}
 $endif$
 $if(author)$
-\author{Brad Weslake\\\textsc{nyu shanghai}\\}
+\author{$author$, \textsc{$institute$}
+$if(email)$
+\\\small{\texttt{\href{mailto:$email$}{$email$}}}}
+$endif$
 $endif$
 $if(institute)$
 \providecommand{\institute}[1]{}
