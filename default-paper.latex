@@ -91,6 +91,8 @@ $endif$
 $if(keywords)$
             pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
 $endif$
+            % Add Git revision info to PDF metadata
+            pdfsubject={Git Revision: \gitAbbrevHash},
 $if(colorlinks)$
             colorlinks=true,
             linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
@@ -299,10 +301,11 @@ $if(lof)$
 \listoffigures
 $endif$
 $body$
-% Incorporate date and version information from git
+% Incorporate date information from git
 \\~
 \\\hspace*{\fill}\DTMusedate{gitdate}
-\\\hspace*{\fill}{\color{Gray}\footnotesize\texttt{VERSION \gitAbbrevHash}}
+% To put git revision information in the body, uncomment the following line
+% \\\hspace*{\fill}{\color{Gray}\footnotesize\texttt{VERSION \gitAbbrevHash}}
 
 $if(natbib)$
 $if(bibliography)$
