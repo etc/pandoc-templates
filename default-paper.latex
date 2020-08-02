@@ -6,7 +6,13 @@
 $if(beamerarticle)$
 \usepackage{beamerarticle} % needs to be loaded first
 $endif$
-\usepackage{amssymb,amsmath}
+
+% Math fonts
+\usepackage{amssymb,amsmath,amsthm,mathrsfs}
+% From http://www.logicmatters.net/latex-for-logicians/symbols/
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128} 
+
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
@@ -137,6 +143,10 @@ $if(biblatex)$
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
+
+% Don't change bullet style in nested lists
+\renewcommand\labelitemii{\textbullet}
+
 % Increase the standard hanging indent for the reference list
 \setlength{\bibhang}{4em}
 % Use a longer line for repeat authors 
